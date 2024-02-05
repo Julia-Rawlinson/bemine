@@ -51,6 +51,7 @@ body, html {
     border-radius: 8px;
     box-shadow: 0 4px #f33782;
     transition: background-color 0.3s, box-shadow 0.2s, transform 0.2s;
+    transition: left 0.5s ease-out, top 0.3s ease-out;
   }
   
   .btn:hover {
