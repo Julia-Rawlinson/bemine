@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Be Mine</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <h1 id="main_text">Will You Be My Valentine?</h1>
+      </div>
+      <div class="gif-center">
+        <img src="https://media.giphy.com/media/aqK6haIcKtXzJS1eID/giphy.gif" alt="Cute Valentine's Day GIF">
+      </div>
+      <div class="buttons">
+        <button class="btn" id="y_btn" onclick="nextPage()">Yes</button>
+        <button class="btn" id="n_btn" onmouseover="moveButton()">No</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    function nextPage() {
+      document.querySelector('.gif-center img').src = 'https://media.giphy.com/media/mEn41M81ttCphmFTTN/giphy.gif';
+      document.querySelector('.buttons').style.display = 'none';
+      document.getElementById('main_text').textContent = 'Hooray!';
+      startFlashing();
+    }
+    function moveButton() {
+      var btn = document.getElementById('n_btn');
+      var x = Math.random() * (window.innerWidth - btn.offsetWidth);
+      var y = Math.random() * (window.innerHeight - btn.offsetHeight);
+      btn.style.position = 'fixed';
+      btn.style.left = `${x}px`;
+      btn.style.top = `${y}px`;
+    }
+
+    function startFlashing() {
+      const colors = ['#ffccd5', '#ffaaaa', '#ffb3e6', '#ffdfba', '#ffffba']; // Add more colors if you like
+      let i = 0;
+      setInterval(() => {
+        document.body.style.backgroundColor = colors[i % colors.length];
+        i++;
+      }, 200); // Change color every 200 milliseconds
+    }
+  </script>
+</html>
