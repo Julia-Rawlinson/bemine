@@ -1,4 +1,3 @@
-// netlify/functions/send-email.js
 const process = require('process');
 const sendgridMail = require('@sendgrid/mail');
 
