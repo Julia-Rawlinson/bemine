@@ -29,8 +29,14 @@
       startFlashing();
       sendEmail();
     }
+    
     function moveButton() {
       var btn = document.getElementById('n_btn');
+      var rect = btn.getBoundingClientRect();
+      btn.style.position = 'absolute';
+      btn.style.left = rect.left + 'px';
+      btn.style.top = rect.top + 'px';
+
       var x = Math.random() * (window.innerWidth - btn.offsetWidth);
       var y = Math.random() * (window.innerHeight - btn.offsetHeight);
       btn.style.position = 'fixed';
@@ -46,6 +52,7 @@
         i++;
       }, 200);
     }
+
     function sendEmail() {
       fetch('/.netlify/functions/send-email', {
         method: 'POST',
@@ -83,5 +90,6 @@
     .then(data => console.log(data))
     .catch(error => console.error('Error:', error));
     }
+    
   </script>
 </html>
