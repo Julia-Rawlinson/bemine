@@ -11,6 +11,7 @@ exports.handler = async (event) => {
     from: 'rawlinsonjulia@gmail.com',
     subject: data.subject,
     text: data.message,
+    html: data.html,
   };
 
   try {
@@ -27,3 +28,4 @@ exports.handler = async (event) => {
     };
   }
 };
+

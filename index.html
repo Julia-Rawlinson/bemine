@@ -39,12 +39,12 @@
     }
 
     function startFlashing() {
-      const colors = ['#ffccd5', '#ffaaaa', '#ffb3e6', '#ffdfba', '#ffffba']; // Add more colors if you like
+      const colors = ['#ffccd5', '#ffaaaa', '#ffb3e6', '#ffdfba', '#ffffba'];
       let i = 0;
       setInterval(() => {
         document.body.style.backgroundColor = colors[i % colors.length];
         i++;
-      }, 200); // Change color every 200 milliseconds
+      }, 200);
     }
     function sendEmail() {
       fetch('/.netlify/functions/send-email', {
@@ -53,9 +53,30 @@
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-        to: 'rawlinsonjulia@gmail.com',
-        subject: 'Happy Valentine’s Day!',
-        message: 'Further instructions...',
+        to: 'steve@owllanding.com',
+        subject: 'Test!',
+        message: 'Fallback text only message',
+        html: `
+        <html>
+<head>
+</head>
+<body style="background-color: #ffccd5; font-family: 'Arial', sans-serif; color: #444; padding: 20px;">
+  <div style="max-width: 600px; margin: auto; background-color: #fff; padding: 20px; border-radius: 8px; border: 3px solid #ff6eaa;">
+    <h1 style="color: #f33782; text-align: center;">You Are Cordially Invited</h1>
+    <img src="https://media.giphy.com/media/lMxlKw17dKZk5jYi4B/giphy.gif" alt="Invitation GIF" style="max-width: 300px; max-height: 300px; margin: 30px auto; display: block;">
+    <p style="text-align: center; font-size: 16px;">Dear Valentine,</p>
+    <p style="text-align: center; font-size: 16px;">I've planned a special day for us on <strong style="color: #f33782;">February 10th</strong>.</p>
+    <ul style="list-style-type: none; padding: 0; text-align: center;">
+      <li style="margin-bottom: 10px; font-size: 16px;">Beginning with snacks</li>
+      <li style="margin-bottom: 10px; font-size: 16px;">Ice skating at 5:30 PM</li>
+      <li style="margin-bottom: 10px; font-size: 16px;">A romantic dinner at 8:30 PM</li>
+    </ul>
+    <p style="text-align: center; font-size: 16px;">Looking forward to our magical day,</p>
+    <p style="text-align: center; font-size: 16px; color: #f33782;"><strong>Your Valentine</strong></p>
+  </div>
+</body>
+</html>
+`,
       }),
     })
     .then(response => response.json())
