@@ -27,6 +27,7 @@
       document.querySelector('.buttons').style.display = 'none';
       document.getElementById('main_text').textContent = 'Hooray!';
       startFlashing();
+      sendEmail();
     }
     function moveButton() {
       var btn = document.getElementById('n_btn');
@@ -44,6 +45,22 @@
         document.body.style.backgroundColor = colors[i % colors.length];
         i++;
       }, 200); // Change color every 200 milliseconds
+    }
+    function sendEmail() {
+      fetch('/.netlify/functions/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+        to: 'rawlinsonjulia@gmail.com.com',
+        subject: 'Happy Valentine’s Day!',
+        message: 'Further instructions...',
+      }),
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
     }
   </script>
 </html>
